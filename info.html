@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>દાનનો સાર | The Essence of Charity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to apply the fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* When Gujarati is active, use Noto Sans Gujarati */
+        html[lang="gu"] body {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+        /* Custom animation for fade-in effect on scroll */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        /* Styling for active language button */
+        .lang-btn.active {
+            background-color: #4f46e5;
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header with Language Switcher -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-indigo-700" data-key="main_title">દાનનો સાર</h1>
+            <div class="flex space-x-2">
+                <button id="lang-gu" class="lang-btn px-3 py-1 text-sm border border-gray-300 rounded-full transition-colors duration-300 active">ગુજરાતી</button>
+                <button id="lang-en" class="lang-btn px-3 py-1 text-sm border border-gray-300 rounded-full transition-colors duration-300">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Infographic Content -->
+    <main class="container mx-auto p-4 md:p-6">
+        <div class="space-y-8">
+
+            <!-- Section 1: The Dilemma -->
+            <section class="infographic-section bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-red-100 text-red-600 rounded-full h-12 w-12 flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-red-700" data-key="sec1_title">મૂંઝવણ: દાન ક્યાં કરવું?</h2>
+                        <p class="mt-2 text-gray-600" data-key="sec1_text">દેરાસર-પાઠશાળામાં દાન આપવું કે જરૂરિયાતમંદ ગરીબો અને આદિવાસીઓને? શું દરિયામાં એક લોટો પાણી ઉમેરવા જેવું છે?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: The Core Principle -->
+            <section class="infographic-section bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                <div class="flex items-start space-x-4">
+                     <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 rounded-full h-12 w-12 flex items-center justify-center">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-indigo-700" data-key="sec2_title">મુખ્ય સિદ્ધાંત: પાત્રની યોગ્યતા</h2>
+                        <p class="mt-2 text-gray-600" data-key="sec2_text">દાનનું ફળ, દાન લેનાર વ્યક્તિના ગુણો અને સંસ્કાર (પાત્રતા) પર આધાર રાખે છે. ગુણવાન વ્યક્તિને આપેલું દાન (<span class="font-semibold">સુપાત્ર દાન</span>) ઘણા કર્મોનો નાશ કરે છે.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 3: Need vs. Appropriateness -->
+            <section class="infographic-section bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                <div class="flex items-start space-x-4">
+                     <div class="flex-shrink-0 bg-teal-100 text-teal-600 rounded-full h-12 w-12 flex items-center justify-center">
+                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-teal-700" data-key="sec3_title">જરૂરિયાત વિરુદ્ધ ઔચિત્ય</h2>
+                        <p class="mt-2 text-gray-600" data-key="sec3_text">જીવનમાં આપણે ઘણીવાર 'જરૂર' નહીં, પણ 'ઔચિત્ય' (યોગ્યતા) જોઈએ છીએ. જેમકે માતા-પિતાના ફોટા પર ફૂલ ચઢાવવા. ધાર્મિક કાર્યોમાં ફક્ત જરૂરિયાતનો તર્ક લાવવો યોગ્ય નથી.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: The 7 Fields -->
+            <section class="infographic-section bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                <div class="flex items-start space-x-4">
+                     <div class="flex-shrink-0 bg-amber-100 text-amber-600 rounded-full h-12 w-12 flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-amber-700" data-key="sec4_title">જિનશાસનના ૭ ક્ષેત્રો: આપણી પ્રથમ ફરજ</h2>
+                        <p class="mt-2 text-gray-600" data-key="sec4_text">આ ક્ષેત્રોમાં આપેલું દાન ક્યારેય વ્યર્થ નથી જતું. તે તીર્થોના જીર્ણોદ્ધાર, સંયમ પાલનમાં મદદ અને જ્ઞાનના પ્રસાર માટે વપરાય છે.</p>
+                        <ul class="mt-4 space-y-2 text-gray-700 list-disc list-inside">
+                            <li data-key="field1">જિનાલય (દેરાસર)</li>
+                            <li data-key="field2">જિનપ્રતિમા (ભગવાનની મૂર્તિ)</li>
+                            <li data-key="field3">જ્ઞાન (શાસ્ત્રો)</li>
+                            <li data-key="field4">સાધુ (મુનિ)</li>
+                            <li data-key="field5">સાધ્વી (આર્યા)</li>
+                            <li data-key="field6">શ્રાવક (ગૃહસ્થ પુરુષ)</li>
+                            <li data-key="field7">શ્રાવિકા (ગૃહસ્થ સ્ત્રી)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Social Donations -->
+            <section class="infographic-section bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                <div class="flex items-start space-x-4">
+                     <div class="flex-shrink-0 bg-sky-100 text-sky-600 rounded-full h-12 w-12 flex items-center justify-center">
+                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-5.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6L5.121 9.27m13.758 0L12 14m-6.879-4.73L12 14"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-sky-700" data-key="sec5_title">સામાજિક દાન (સ્કૂલ, હોસ્પિટલ)</h2>
+                        <p class="mt-2 text-gray-600" data-key="sec5_text_1">આવી સંસ્થાઓમાં દાન આપવું પડે તો બે શરતો યાદ રાખવી:</p>
+                        <ol class="mt-3 space-y-2 text-gray-600 list-decimal list-inside">
+                            <li data-key="sec5_text_2">આવા દાનનું ગૌરવ લેવાનું છોડી દેવું.</li>
+                            <li data-key="sec5_text_3">પોતાના નામ કરતાં <span class="font-semibold">ભગવાન મહાવીર અને જૈન ધર્મ</span>ના નામને વધુ મહત્વ આપવું. ત્યાં ભગવાનની પ્રતિમા, નવકાર મંત્ર, અને સંસ્કારના પાઠ ઉમેરવાનો આગ્રહ રાખવો.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Supreme Donation -->
+            <section class="infographic-section bg-gradient-to-br from-purple-500 to-indigo-600 text-white p-8 rounded-2xl shadow-2xl">
+                <div class="text-center">
+                    <div class="flex justify-center mb-4">
+                        <div class="bg-white/20 rounded-full h-16 w-16 flex items-center justify-center">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                    </div>
+                    <h2 class="text-2xl font-bold" data-key="sec6_title">સર્વશ્રેષ્ઠ દાન: જ્ઞાનદાન</h2>
+                    <p class="mt-3 opacity-90" data-key="sec6_text_1">પૈસા કે વસ્તુ આપવા કરતાં કોઈને સાચું જ્ઞાન આપવું એ સર્વોચ્ચ દાન છે. કારણ કે જ્ઞાનથી વ્યક્તિ પોતાનું અને બીજા અનેકનું કલ્યાણ કરે છે.</p>
+                    <p class="mt-3 opacity-90 font-semibold" data-key="sec6_text_2">જ્ઞાનદાન = દેરાસર નિર્માણ, સુપાત્રદાન, દીક્ષા, એમ અનેક દાનનું ફળ એક સાથે આપે છે.</p>
+                </div>
+            </section>
+            
+            <!-- Section 7: Ultimate Benefit -->
+            <section class="infographic-section bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                <div class="flex items-start space-x-4">
+                     <div class="flex-shrink-0 bg-green-100 text-green-600 rounded-full h-12 w-12 flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-green-700" data-key="sec7_title">જ્ઞાનદાનનો અંતિમ લાભ</h2>
+                        <p class="mt-2 text-gray-600" data-key="sec7_text_1">એક વ્યક્તિને સાચું જ્ઞાન આપવાથી તે હિંસાથી બચે છે. આ રીતે, આપણે <span class="font-semibold">આખા બ્રહ્માંડના જીવોને અભયદાન</span> આપવાનો લાભ મેળવીએ છીએ. આ જ સાચી જીવદયા છે.</p>
+                        <p class="mt-2 text-gray-600" data-key="sec7_text_2">આપણે જિનશાસનની આયુષ્ય એક પેઢી આગળ વધારીએ છીએ.</p>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Section 8: The Best Account -->
+            <section class="infographic-section bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                 <div class="flex items-start space-x-4">
+                     <div class="flex-shrink-0 bg-orange-100 text-orange-600 rounded-full h-12 w-12 flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-orange-700" data-key="sec8_title">દાન માટે શ્રેષ્ઠ ખાતું: 'સાધારણ'</h2>
+                        <p class="mt-2 text-gray-600" data-key="sec8_text">'સાધારણ' નો અર્થ 'ઓર્ડિનરી' નહીં, પણ 'કોમન' (બધા માટેનું) થાય છે. આ ખાતામાંથી જરૂર મુજબ સાતેય ક્ષેત્રોમાં દાન વપરાય છે, જેથી બધા ક્ષેત્રોની ભક્તિનો લાભ મળે છે.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 9: Conclusion -->
+            <section class="infographic-section text-center p-6 bg-indigo-50 rounded-2xl border-2 border-dashed border-indigo-200">
+                <h2 class="text-xl font-bold text-indigo-800" data-key="sec9_title">આભાર... જિનશાસનનો!</h2>
+                <p class="mt-3 text-gray-700 max-w-2xl mx-auto" data-key="sec9_text">"હું તો ફક્ત એક પોસ્ટમેન છું, જે જિનશાસનનો સંદેશ પહોંચાડી રહ્યો છે. આભાર તો આપણે સૌએ જિનશાસનનો માનવો જોઈએ." - સંયમ</p>
+            </section>
+
+        </div>
+    </main>
+    
+    <footer class="text-center py-6 text-sm text-gray-500">
+        <p data-key="footer_text">"દાન" પ્રકરણ પર આધારિત ઇન્ફોગ્રાફિક.</p>
+    </footer>
+
+    <script>
+        // Store all text content in a single object for easy management
+        const content = {
+            gu: {
+                main_title: "દાનનો સાર",
+                sec1_title: "મૂંઝવણ: દાન ક્યાં કરવું?",
+                sec1_text: "દેરાસર-પાઠશાળામાં દાન આપવું કે જરૂરિયાતમંદ ગરીબો અને આદિવાસીઓને? શું દરિયામાં એક લોટો પાણી ઉમેરવા જેવું છે?",
+                sec2_title: "મુખ્ય સિદ્ધાંત: પાત્રની યોગ્યતા",
+                sec2_text: "દાનનું ફળ, દાન લેનાર વ્યક્તિના ગુણો અને સંસ્કાર (પાત્રતા) પર આધાર રાખે છે. ગુણવાન વ્યક્તિને આપેલું દાન (<span class='font-semibold'>સુપાત્ર દાન</span>) ઘણા કર્મોનો નાશ કરે છે.",
+                sec3_title: "જરૂરિયાત વિરુદ્ધ ઔચિત્ય",
+                sec3_text: "જીવનમાં આપણે ઘણીવાર 'જરૂર' નહીં, પણ 'ઔચિત્ય' (યોગ્યતા) જોઈએ છીએ. જેમકે માતા-પિતાના ફોટા પર ફૂલ ચઢાવવા. ધાર્મિક કાર્યોમાં ફક્ત જરૂરિયાતનો તર્ક લાવવો યોગ્ય નથી.",
+                sec4_title: "જિનશાસનના ૭ ક્ષેત્રો: આપણી પ્રથમ ફરજ",
+                sec4_text: "આ ક્ષેત્રોમાં આપેલું દાન ક્યારેય વ્યર્થ નથી જતું. તે તીર્થોના જીર્ણોદ્ધાર, સંયમ પાલનમાં મદદ અને જ્ઞાનના પ્રસાર માટે વપરાય છે.",
+                field1: "જિનાલય (દેરાસર)",
+                field2: "જિનપ્રતિમા (ભગવાનની મૂર્તિ)",
+                field3: "જ્ઞાન (શાસ્ત્રો)",
+                field4: "સાધુ (મુનિ)",
+                field5: "સાધ્વી (આર્યા)",
+                field6: "શ્રાવક (ગૃહસ્થ પુરુષ)",
+                field7: "શ્રાવિકા (ગૃહસ્થ સ્ત્રી)",
+                sec5_title: "સામાજિક દાન (સ્કૂલ, હોસ્પિટલ)",
+                sec5_text_1: "આવી સંસ્થાઓમાં દાન આપવું પડે તો બે શરતો યાદ રાખવી:",
+                sec5_text_2: "આવા દાનનું ગૌરવ લેવાનું છોડી દેવું.",
+                sec5_text_3: "પોતાના નામ કરતાં <span class='font-semibold'>ભગવાન મહાવીર અને જૈન ધર્મ</span>ના નામને વધુ મહત્વ આપવું. ત્યાં ભગવાનની પ્રતિમા, નવકાર મંત્ર, અને સંસ્કારના પાઠ ઉમેરવાનો આગ્રહ રાખવો.",
+                sec6_title: "સર્વશ્રેષ્ઠ દાન: જ્ઞાનદાન",
+                sec6_text_1: "પૈસા કે વસ્તુ આપવા કરતાં કોઈને સાચું જ્ઞાન આપવું એ સર્વોચ્ચ દાન છે. કારણ કે જ્ઞાનથી વ્યક્તિ પોતાનું અને બીજા અનેકનું કલ્યાણ કરે છે.",
+                sec6_text_2: "જ્ઞાનદાન = દેરાસર નિર્માણ, સુપાત્રદાન, દીક્ષા, એમ અનેક દાનનું ફળ એક સાથે આપે છે.",
+                sec7_title: "જ્ઞાનદાનનો અંતિમ લાભ",
+                sec7_text_1: "એક વ્યક્તિને સાચું જ્ઞાન આપવાથી તે હિંસાથી બચે છે. આ રીતે, આપણે <span class='font-semibold'>આખા બ્રહ્માંડના જીવોને અભયદાન</span> આપવાનો લાભ મેળવીએ છીએ. આ જ સાચી જીવદયા છે.",
+                sec7_text_2: "આપણે જિનશાસનની આયુષ્ય એક પેઢી આગળ વધારીએ છીએ.",
+                sec8_title: "દાન માટે શ્રેષ્ઠ ખાતું: 'સાધારણ'",
+                sec8_text: "'સાધારણ' નો અર્થ 'ઓર્ડિનરી' નહીં, પણ 'કોમન' (બધા માટેનું) થાય છે. આ ખાતામાંથી જરૂર મુજબ સાતેય ક્ષેત્રોમાં દાન વપરાય છે, જેથી બધા ક્ષેત્રોની ભક્તિનો લાભ મળે છે.",
+                sec9_title: "આભાર... જિનશાસનનો!",
+                sec9_text: "\"હું તો ફક્ત એક પોસ્ટમેન છું, જે જિનશાસનનો સંદેશ પહોંચાડી રહ્યો છે. આભાર તો આપણે સૌએ જિનશાસનનો માનવો જોઈએ.\" - સંયમ",
+                footer_text: "\"દાન\" પ્રકરણ પર આધારિત ઇન્ફોગ્રાફિક."
+            },
+            en: {
+                main_title: "Essence of Charity",
+                sec1_title: "Dilemma: Where to Donate?",
+                sec1_text: "Should one donate to temples and religious schools, or to the needy, poor, and tribals? Is it like adding a drop to the ocean?",
+                sec2_title: "The Core Principle: Worthiness of the Recipient",
+                sec2_text: "The fruit of charity depends on the qualities and virtues (worthiness) of the recipient. A donation to a virtuous person (<span class='font-semibold'>Supatra Daan</span>) destroys many karmas.",
+                sec3_title: "Need vs. Appropriateness",
+                sec3_text: "In life, we often act based on 'appropriateness' (Auchitya), not just 'need'. Like offering flowers to a photo of deceased parents. Applying only the logic of need in religious matters isn't right.",
+                sec4_title: "The 7 Fields of Jinshasan: Our First Duty",
+                sec4_text: "Donations to these fields are never wasted. They are used for renovating pilgrimages, helping ascetics follow their path, and for spreading knowledge.",
+                field1: "Jinalaya (Temple)",
+                field2: "Jinpratima (Idol of the Lord)",
+                field3: "Gyan (Knowledge/Scriptures)",
+                field4: "Sadhu (Monk)",
+                field5: "Sadhvi (Nun)",
+                field6: "Shravak (Male lay follower)",
+                field7: "Shravika (Female lay follower)",
+                sec5_title: "Social Donations (Schools, Hospitals)",
+                sec5_text_1: "If you must donate to such institutions, remember two conditions:",
+                sec5_text_2: "Stop taking pride in such donations.",
+                sec5_text_3: "Prioritize the name of <span class='font-semibold'>Lord Mahavir and Jainism</span> over your own name. Insist on adding an idol, the Navkar Mantra, and moral lessons there.",
+                sec6_title: "The Supreme Donation: Gyan Daan",
+                sec6_text_1: "Giving true knowledge is the highest form of charity, more than money or objects. Because with knowledge, a person can bring welfare to themselves and many others.",
+                sec6_text_2: "Gyan Daan = Building a temple, donating to a worthy person, giving Diksha, it yields the fruits of many donations at once.",
+                sec7_title: "The Ultimate Benefit of Gyan Daan",
+                sec7_text_1: "By giving true knowledge to one person, they refrain from violence. Thus, we gain the benefit of giving <span class='font-semibold'>fearlessness (Abhaydaan) to all beings in the universe</span>. This is true compassion.",
+                sec7_text_2: "We extend the life of the Jinshasan by one generation.",
+                sec8_title: "The Best Account for Charity: 'Sadharan'",
+                sec8_text: "'Sadharan' does not mean 'ordinary', but 'common' (for all). Donations from this account are used across all seven fields as needed, giving the benefit of devotion to all fields.",
+                sec9_title: "Gratitude... to the Jinshasan!",
+                sec9_text: "\"I am just a postman, passing on the message of the Jinshasan. We should all be grateful to the Jinshasan.\" - Sanyam",
+                footer_text: "An infographic based on the chapter 'Daan'."
+            }
+        };
+
+        const guBtn = document.getElementById('lang-gu');
+        const enBtn = document.getElementById('lang-en');
+        const allElements = document.querySelectorAll('[data-key]');
+        const htmlTag = document.documentElement;
+
+        function changeLanguage(lang) {
+            // Update the lang attribute on the HTML tag
+            htmlTag.setAttribute('lang', lang);
+
+            // Update all text content
+            allElements.forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (content[lang][key]) {
+                    element.innerHTML = content[lang][key];
+                }
+            });
+
+            // Update active state of buttons
+            if (lang === 'gu') {
+                guBtn.classList.add('active');
+                enBtn.classList.remove('active');
+            } else {
+                enBtn.classList.add('active');
+                guBtn.classList.remove('active');
+            }
+        }
+        
+        // Event Listeners for language buttons
+        guBtn.addEventListener('click', () => changeLanguage('gu'));
+        enBtn.addEventListener('click', () => changeLanguage('en'));
+
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('.infographic-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-section');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize with default language
+        changeLanguage('gu');
+    </script>
+
+</body>
+</html>

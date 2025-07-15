@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="page_title">દાન: માર્ગદર્શન અને સમજ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1; /* Indigo 500 */
+            --secondary-color: #14b8a6; /* Teal 500 */
+            --accent-color: #f97316; /* Orange 500 */
+            --background-light: #f8fafc; /* Slate 50 */
+            --card-bg: #ffffff;
+            --text-dark: #1e293b; /* Slate 800 */
+            --text-light: #64748b; /* Slate 500 */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            -webkit-tap-highlight-color: transparent;
+        }
+        html[lang="gu"] body, html[lang="gu"] button, html[lang="gu"] input, html[lang="gu"] textarea {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+        .lang-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            border-color: var(--primary-color);
+        }
+        .section-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800;
+            margin-bottom: 1.5rem; /* 24px */
+            text-align: center;
+            color: var(--text-dark);
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* 18px */
+            color: var(--text-light);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem auto; /* 48px */
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem 1.5rem; /* 32px 24px */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent-color), #ef4444); /* Orange 500 to Red 500 */
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+        .video-button {
+             display: inline-block;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .video-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Language Switcher -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-indigo-700" data-key="header_title">દાન માર્ગદર્શન</h1>
+            <div class="flex space-x-2">
+                <button id="lang-gu" class="lang-btn px-3 py-1 text-sm border border-gray-300 rounded-full transition-colors duration-300 active">ગુજરાતી</button>
+                <button id="lang-en" class="lang-btn px-3 py-1 text-sm border border-gray-300 rounded-full transition-colors duration-300">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-6">
+        
+        <!-- Welcome Section -->
+        <section class="text-center py-16 md:py-24">
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900">
+                <span class="gradient-text" data-key="main_title">દાનની સાચી સમજ</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto" data-key="main_subtitle">તમારા દાનને વધુ અર્થપૂર્ણ બનાવો. જાણો ક્યાં, કેમ અને કેવી રીતે દાન કરવું જેથી મહત્તમ પુણ્ય મળે.</p>
+        </section>
+
+        <!-- Podcasts Section -->
+        <section id="podcasts" class="py-12">
+            <h2 class="section-title" data-key="podcast_section_title">પ્રેરણાદાયી પોડકાસ્ટ</h2>
+            <p class="section-subtitle" data-key="podcast_section_subtitle">દાનના વિષય પર ઊંડાણપૂર્વક સમજ આપતા આ વિડિઓઝ જુઓ અને તમારા જ્ઞાનને વિસ્તૃત કરો.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Podcast 1 -->
+                <div class="card text-center">
+                    <h3 class="text-xl font-bold mb-3" data-key="podcast1_title">દાનની સૌથી મોટી ભૂલ!</h3>
+                    <p class="text-gray-600 mb-6" data-key="podcast1_desc">શું તમે જાણો છો કે દાન કરતી વખતે સામાન્ય રીતે કઈ ભૂલ થાય છે? આ વિડિઓ તમને એ ભૂલથી બચાવશે અને સાચો માર્ગ બતાવશે.</p>
+                    <a href="https://youtu.be/AyhhCHkPYjs" target="_blank" class="video-button" data-key="watch_video_button">વિડિઓ જુઓ</a>
+                </div>
+                <!-- Podcast 2 -->
+                <div class="card text-center">
+                    <h3 class="text-xl font-bold mb-3" data-key="podcast2_title">તમારું દાન: પુણ્ય કે પાપ?</h3>
+                    <p class="text-gray-600 mb-6" data-key="podcast2_desc">દરેક દાન પુણ્ય નથી કમાવતું. જાણો ક્યારે તમારું દાન પાપનું કારણ બની શકે છે અને કેવી રીતે સુપાત્રે દાન કરવું.</p>
+                    <a href="https://youtu.be/KwN63Mc5q-4" target="_blank" class="video-button" data-key="watch_video_button">વિડિઓ જુઓ</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infographic & Quiz Links Section -->
+        <section id="links" class="py-12 bg-gray-100 -mx-4 px-4 md:-mx-6 md:px-6 rounded-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Infographic Link -->
+                <div class="text-center p-8 bg-white rounded-xl shadow-lg">
+                    <h2 class="section-title" data-key="info_section_title">દાનનો સાર</h2>
+                    <p class="section-subtitle" data-key="info_section_subtitle">દાનના મુખ્ય સિદ્ધાંતોને સરળતાથી સમજવા માટે આ ઇન્ફોગ્રાફિક જુઓ.</p>
+                    <a href="info.html" target="_blank" class="cta-button" data-key="open_info_button">ઇન્ફોગ્રાફિક જુઓ</a>
+                </div>
+                <!-- Quiz Link -->
+                <div class="text-center p-8 bg-white rounded-xl shadow-lg">
+                    <h2 class="section-title" data-key="quiz_section_title">જ્ઞાન ચકાસણી</h2>
+                    <p class="section-subtitle" data-key="quiz_section_subtitle">તમે જે શીખ્યા છો તેને વ્યવહારમાં કેવી રીતે મુકશો? આ ક્વિઝ દ્વારા તમારી સમજને વધુ દ્રઢ બનાવો.</p>
+                    <a href="quiz9.html" target="_blank" class="cta-button" data-key="start_quiz_button">ક્વિઝ શરૂ કરો</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-8 mt-12">
+        <p class="font-semibold" data-key="footer_name">મનીષ વી. શાહ (વડોદરા)</p>
+        <p class="mt-1 opacity-75" data-key="footer_contact">વોટ્સએપ: 94299 26447</p>
+    </footer>
+
+    <script>
+        // --- CONTENT STORAGE ---
+        const content = {
+            gu: {
+                page_title: "દાન: માર્ગદર્શન અને સમજ",
+                header_title: "દાન માર્ગદર્શન",
+                main_title: "દાનની સાચી સમજ",
+                main_subtitle: "તમારા દાનને વધુ અર્થપૂર્ણ બનાવો. જાણો ક્યાં, કેમ અને કેવી રીતે દાન કરવું જેથી મહત્તમ પુણ્ય મળે.",
+                podcast_section_title: "પ્રેરણાદાયી પોડકાસ્ટ",
+                podcast_section_subtitle: "દાનના વિષય પર ઊંડાણપૂર્વક સમજ આપતા આ વિડિઓઝ જુઓ અને તમારા જ્ઞાનને વિસ્તૃત કરો.",
+                podcast1_title: "દાનની સૌથી મોટી ભૂલ!",
+                podcast1_desc: "શું તમે જાણો છો કે દાન કરતી વખતે સામાન્ય રીતે કઈ ભૂલ થાય છે? આ વિડિઓ તમને એ ભૂલથી બચાવશે અને સાચો માર્ગ બતાવશે.",
+                podcast2_title: "તમારું દાન: પુણ્ય કે પાપ?",
+                podcast2_desc: "દરેક દાન પુણ્ય નથી કમાવતું. જાણો ક્યારે તમારું દાન પાપનું કારણ બની શકે છે અને કેવી રીતે સુપાત્રે દાન કરવું.",
+                watch_video_button: "વિડિઓ જુઓ",
+                info_section_title: "દાનનો સાર",
+                info_section_subtitle: "દાનના મુખ્ય સિદ્ધાંતોને સરળતાથી સમજવા માટે આ ઇન્ફોગ્રાફિક જુઓ.",
+                quiz_section_title: "જ્ઞાન ચકાસણી",
+                quiz_section_subtitle: "તમે જે શીખ્યા છો તેને વ્યવહારમાં કેવી રીતે મુકશો? આ ક્વિઝ દ્વારા તમારી સમજને વધુ દ્રઢ બનાવો.",
+                open_info_button: "ઇન્ફોગ્રાફિક જુઓ",
+                start_quiz_button: "ક્વિઝ શરૂ કરો",
+                footer_name: "મનીષ વી. શાહ (વડોદરા)",
+                footer_contact: "વોટ્સએપ: 94299 26447"
+            },
+            en: {
+                page_title: "Charity: Guidance and Understanding",
+                header_title: "Charity Guidance",
+                main_title: "The True Understanding of Charity",
+                main_subtitle: "Make your donations more meaningful. Learn where, why, and how to donate to earn maximum merit.",
+                podcast_section_title: "Inspirational Podcasts",
+                podcast_section_subtitle: "Watch these videos for a deep dive into the subject of charity and expand your knowledge.",
+                podcast1_title: "The Biggest Mistake in Donation!",
+                podcast1_desc: "Do you know the most common mistake made while donating? This video will save you from that mistake and show you the right path.",
+                podcast2_title: "Your Donation: Merit or Sin?",
+                podcast2_desc: "Not every donation earns merit. Learn when your donation can become a cause of sin and how to donate to a worthy recipient.",
+                watch_video_button: "Watch Video",
+                info_section_title: "Essence of Charity",
+                info_section_subtitle: "View this infographic to easily understand the core principles of donation.",
+                quiz_section_title: "Test Your Knowledge",
+                quiz_section_subtitle: "How will you apply what you've learned into practice? Strengthen your understanding with this quiz.",
+                open_info_button: "View Infographic",
+                start_quiz_button: "Start Quiz",
+                footer_name: "Manish V. Shah (Vadodara)",
+                footer_contact: "WhatsApp: 94299 26447"
+            }
+        };
+
+        // --- GLOBAL VARIABLES ---
+        let currentLanguage = 'gu';
+
+        // --- DOM ELEMENTS ---
+        const guBtn = document.getElementById('lang-gu');
+        const enBtn = document.getElementById('lang-en');
+        const allElements = document.querySelectorAll('[data-key]');
+        const htmlTag = document.documentElement;
+
+        // --- FUNCTIONS ---
+
+        /**
+         * Switches the language of the entire page.
+         * @param {string} lang - The language to switch to ('gu' or 'en').
+         */
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            htmlTag.setAttribute('lang', lang);
+
+            // Update all text elements with data-key
+            allElements.forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (content[lang][key]) {
+                    element.innerHTML = content[lang][key];
+                }
+            });
+
+            // Update button styles
+            guBtn.classList.toggle('active', lang === 'gu');
+            enBtn.classList.toggle('active', lang === 'en');
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup language switchers
+            guBtn.addEventListener('click', () => changeLanguage('gu'));
+            enBtn.addEventListener('click', () => changeLanguage('en'));
+
+            // Set initial language
+            changeLanguage('gu');
+        });
+
+    </script>
+</body>
+</html>

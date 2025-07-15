@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>દાન ક્વિઝ | Charity Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Styling */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #50e3c2;
+            --background-color: #f4f4f9;
+            --card-bg-color: #ffffff;
+            --text-color: #333333;
+            --light-text-color: #ffffff;
+            --correct-color: #28a745;
+            --wrong-color: #dc3545;
+            --explanation-bg: #fffbe6;
+            --font-gu: 'Noto Sans Gujarati', sans-serif;
+            --font-en: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-en);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header Styling */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            margin-top: 15px;
+        }
+
+        .lang-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--light-text-color);
+            border: 1px solid var(--light-text-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin: 0 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .lang-btn.active {
+            background-color: var(--light-text-color);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Quiz Card Styling */
+        .quiz-card {
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .quiz-card:focus-within {
+            transform: translateY(-5px);
+        }
+
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            text-align: left;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .option:hover:not([disabled]) {
+            background-color: #e9ecef;
+            border-color: #adb5bd;
+        }
+
+        .option.correct {
+            background-color: #d4edda;
+            border-color: var(--correct-color);
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option.wrong {
+            background-color: #f8d7da;
+            border-color: var(--wrong-color);
+            color: #721c24;
+            font-weight: bold;
+        }
+        
+        .option:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        /* Explanation Box */
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--explanation-bg);
+            border-left: 5px solid var(--primary-color);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .explanation .correct-text {
+            color: var(--correct-color);
+            font-weight: bold;
+        }
+
+        .explanation .wrong-text {
+            color: var(--wrong-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1 id="main-title">દાન: એક દ્રષ્ટિકોણ</h1>
+            <div class="lang-switcher">
+                <button id="lang-gu" class="lang-btn active">ગુજરાતી</button>
+                <button id="lang-en" class="lang-btn">English</button>
+            </div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Quiz cards will be dynamically inserted here -->
+        </div>
+
+        <div class="footer" id="footer-text">
+            મનીષ વી. શાહ: વોટ્સએપ: 94299 26447: (વડોદરા)
+        </div>
+    </div>
+
+    <script>
+        // --- DATA ---
+        // Contains all questions, options, and explanations in both languages.
+        const quizData = [
+            // Chapter Questions
+            {
+                id: 1,
+                question_gu: "વાર્તામાં કાકા કોને દાન આપતા હતા?",
+                question_en: "To whom did the uncle in the story give charity?",
+                options_gu: ["દેરાસરમાં", "પાઠશાળામાં", "આદિવાસીઓને", "ગરીબ વિદ્યાર્થીઓને"],
+                options_en: ["In the Derasar", "In the Pathshala", "To the tribals", "To poor students"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: આદિવાસીઓને. કાકા માનતા હતા કે સાચી જરૂરિયાતવાળા આદિવાસીઓ છે.",
+                explanation_en: "Correct Answer: To the tribals. The uncle believed that the tribals were the ones in real need."
+            },
+            {
+                id: 2,
+                question_gu: "સંયમના મતે, દેરાસર-પાઠશાળામાં આપેલું દાન કેવું ભાથું બને છે?",
+                question_en: "According to Sanyam, what kind of provision does a donation to a Derasar-Pathshala become?",
+                options_gu: ["એક ભવનું", "ભવોભવનું", "થોડા સમયનું", "નકામું"],
+                options_en: ["For one life", "For many lives", "For a short time", "Useless"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: ભવોભવનું. કારણ કે ત્યાંથી મળતી શાંતિ અને સંસ્કાર ભવોભવ સુધી સાથે રહે છે.",
+                explanation_en: "Correct Answer: For many lives. Because the peace and values obtained from there last for many lifetimes."
+            },
+            {
+                id: 3,
+                question_gu: "દેરાસરમાં દાન આપવાથી લાખો લોકોને શું મળે છે?",
+                question_en: "What do millions of people get from donating to a Derasar?",
+                options_gu: ["પૈસા", "ભોજન", "શાંતિ", "કપડાં"],
+                options_en: ["Money", "Food", "Peace", "Clothes"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: શાંતિ. દેરાસરથી મળતી શાંતિ લોકોને મોક્ષના દ્વાર સુધી પહોંચાડી શકે છે.",
+                explanation_en: "Correct Answer: Peace. The peace obtained from a Derasar can lead people to the doors of liberation."
+            },
+            {
+                id: 4,
+                question_gu: "પાઠશાળા બાળકોને શું આપે છે?",
+                question_en: "What does a Pathshala give to children?",
+                options_gu: ["રમકડાં", "પૈસા", "સંસ્કાર", "માત્ર પુસ્તકો"],
+                options_en: ["Toys", "Money", "Values (Sanskars)", "Only books"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: સંસ્કાર. પાઠશાળાથી મળતા સંસ્કાર બાળકોના જીવનને સફળ બનાવે છે.",
+                explanation_en: "Correct Answer: Values (Sanskars). The values obtained from a Pathshala make children's lives successful."
+            },
+            {
+                id: 5,
+                question_gu: "સંયમે દેરાસર અને પાઠશાળાની સરખામણી કોની સાથે કરી છે?",
+                question_en: "To whom did Sanyam compare the Derasar and Pathshala?",
+                options_gu: ["મિત્રો સાથે", "શિક્ષકો સાથે", "માતા-પિતા સાથે", "સરકાર સાથે"],
+                options_en: ["With friends", "With teachers", "With parents", "With the government"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: માતા-પિતા સાથે. જેમ માતા-પિતા આપણને સંસ્કાર આપે છે, તેમ દેરાસર અને પાઠશાળા પણ ધર્મ અને જ્ઞાનના સંસ્કાર આપે છે.",
+                explanation_en: "Correct Answer: With parents. Just as parents give us values, the Derasar and Pathshala also provide values of religion and knowledge."
+            },
+            {
+                id: 6,
+                question_gu: "દેરાસર અને પાઠશાળાને દાન આપવું એ આપણી શું છે?",
+                question_en: "What is our responsibility towards donating to a Derasar and Pathshala?",
+                options_gu: ["મરજી", "ફરજ", "શોખ", "જરૂરી નથી"],
+                options_en: ["A choice", "A duty", "A hobby", "Not necessary"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: ફરજ. તે આપણા ધર્મ અને સંસ્કૃતિના પ્રતિક છે, તેથી તેમને સાચવવા આપણી ફરજ છે.",
+                explanation_en: "Correct Answer: A duty. They are symbols of our religion and culture, so it is our duty to preserve them."
+            },
+            {
+                id: 7,
+                question_gu: "કાકાના 'દરિયામાં લોટો પાણી' વાળા તર્કનો સંયમે શું જવાબ આપ્યો?",
+                question_en: "How did Sanyam respond to the uncle's 'a mug of water in the ocean' logic?",
+                options_gu: ["તમે સાચા છો", "દરિયો મોટો છે", "દેરાસર-પાઠશાળા દરિયો નથી, આપણું ઘર છે", "પાણી ઉમેરવું જોઈએ"],
+                options_en: ["You are right", "The ocean is big", "The Derasar-Pathshala is not an ocean, it is our home", "Water should be added"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: દેરાસર-પાઠશાળા દરિયો નથી, આપણું ઘર છે. ઘરમાં આપણે જે આપીએ તે ઓછું છે અને તેનો ફાયદો આપણને જ થાય છે.",
+                explanation_en: "Correct Answer: The Derasar-Pathshala is not an ocean, it is our home. Whatever we give in our home is never too much, and it benefits us directly."
+            },
+            {
+                id: 8,
+                question_gu: "વાર્તાના અંતે દાન માટેનો સૌથી મહત્વનો નિયમ કયો બતાવ્યો છે?",
+                question_en: "What is the most important rule of charity mentioned at the end of the story?",
+                options_gu: ["વધારે દાન આપવું", "ગુપ્ત દાન આપવું", "સુપાત્રે દાન આપવું", "જાહેરમાં દાન આપવું"],
+                options_en: ["Give more charity", "Give secretly", "Give to a worthy recipient", "Give publicly"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: સુપાત્રે દાન આપવું. જે વ્યક્તિ, સંસ્થા કે ક્ષેત્ર દાનને પાત્ર હોય, ત્યાં જ દાન આપવું જોઈએ.",
+                explanation_en: "Correct Answer: Give to a worthy recipient. Charity should only be given to a person, institution, or field that is deserving of it."
+            },
+            {
+                id: 9,
+                question_gu: "સંયમના મતે 'સુપાત્ર' કોને કહેવાય?",
+                question_en: "According to Sanyam, who is considered a 'Supatra' (worthy recipient)?",
+                options_gu: ["જે ધર્મ, જ્ઞાન, સંસ્કાર અને સેવાની પ્રવૃત્તિ કરે", "જેની પાસે બહુ પૈસા હોય", "જે ભોગવિલાસની પ્રવૃત્તિ કરે", "જે પ્રખ્યાત હોય"],
+                options_en: ["One who engages in activities of religion, knowledge, values, and service", "One who has a lot of money", "One who engages in indulgent activities", "One who is famous"],
+                correct_index: 0,
+                explanation_gu: "સાચો જવાબ: જે ધર્મ, જ્ઞાન, સંસ્કાર અને સેવાની પ્રવૃત્તિ કરતું હોય, તે સુપાત્ર છે.",
+                explanation_en: "Correct Answer: One who engages in activities of religion, knowledge, values, and service is a Supatra."
+            },
+            {
+                id: 10,
+                question_gu: "સંયમના મતે 'કુપાત્ર' કોણ છે?",
+                question_en: "According to Sanyam, who is a 'Kupatra' (unworthy recipient)?",
+                options_gu: ["જે ધર્મ અને જ્ઞાનની પ્રવૃત્તિ કરે", "જે સેવા કરે", "જે અધર્મ અને ભોગવિલાસની પ્રવૃત્તિ કરે", "જે ગરીબ હોય"],
+                options_en: ["One who engages in religious and knowledge activities", "One who serves others", "One who engages in irreligious and indulgent activities", "One who is poor"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: જે અધર્મ, અજ્ઞાન, કુસંસ્કાર અને ભોગવિલાસની પ્રવૃત્તિ કરતું હોય, તે કુપાત્ર છે.",
+                explanation_en: "Correct Answer: One who engages in irreligious, ignorant, unethical, and indulgent activities is a Kupatra."
+            },
+            {
+                id: 11,
+                question_gu: "આદિવાસીઓને આપેલું દાન કેવું ભાથું બને છે?",
+                question_en: "What kind of provision does a donation to the tribals become?",
+                options_gu: ["એક ભવનું", "ભવોભવનું", "કાયમનું", "નકામું"],
+                options_en: ["For one life", "For many lives", "Permanent", "Useless"],
+                correct_index: 0,
+                explanation_gu: "સાચો જવાબ: એક ભવનું. કારણ કે તે તેમની ભૌતિક જરૂરિયાતો પૂરી કરે છે, જે આ જીવન માટે હોય છે.",
+                explanation_en: "Correct Answer: For one life. Because it fulfills their material needs, which are for this current life."
+            },
+            {
+                id: 12,
+                question_gu: "દેરાસર અને પાઠશાળા પાસે ભલે પૈસા હોય, તો પણ તેમને શા માટે આપવું જોઈએ?",
+                question_en: "Even if the Derasar and Pathshala have money, why should we still donate to them?",
+                options_gu: ["કારણ કે તે આપણી ફરજ છે", "કારણ કે તેઓ માંગે છે", "આપવાની જરૂર નથી", "વ્યાજ કમાવવા માટે"],
+                options_en: ["Because it is our duty", "Because they ask for it", "There is no need to give", "To earn interest"],
+                correct_index: 0,
+                explanation_gu: "સાચો જવાબ: કારણ કે તે આપણી ફરજ છે. જેમ પુત્ર પૈસાદાર પિતાને પણ ભેટ આપે છે, તે ફરજનો ભાગ છે.",
+                explanation_en: "Correct Answer: Because it is our duty. Just as a son gives a gift to his wealthy father, it is part of his duty."
+            },
+             {
+                id: 13,
+                question_gu: "દેરાસર-પાઠશાળામાં દાન આપવાનો સૌથી મોટો ફાયદો શું છે?",
+                question_en: "What is the biggest benefit of donating to a Derasar-Pathshala?",
+                options_gu: ["નામ થાય છે", "આત્મસંતોષ અને ગૌરવ થાય છે", "પૈસા પાછા મળે છે", "લોકો વખાણ કરે છે"],
+                options_en: ["One becomes famous", "One gets self-satisfaction and pride", "One gets money back", "People praise you"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: આત્મસંતોષ અને ગૌરવ. આપણે આપણા ધર્મ અને સંસ્કૃતિ માટે કંઈક કરી રહ્યા છીએ તેની ખુશી મળે છે.",
+                explanation_en: "Correct Answer: Self-satisfaction and pride. One feels happy for doing something for their religion and culture."
+            },
+            {
+                id: 14,
+                question_gu: "યુગને શરૂઆતમાં કાકાની વાત કેમ સાચી લાગી?",
+                question_en: "Why did Yug initially find the uncle's point valid?",
+                options_gu: ["કારણ કે તે તાર્કિક હતી", "કારણ કે તે ગરીબોની ચિંતા કરતા હતા", "કારણ કે સંયમે સમજાવ્યું", "કારણ કે તે દેરાસર વિરુદ્ધ હતા"],
+                options_en: ["Because it was logical", "Because he was concerned about the poor", "Because Sanyam explained it", "Because he was against the Derasar"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: કારણ કે તે ગરીબોની ચિંતા કરતા હતા. કોઈ વ્યક્તિ જરૂરિયાતમંદોનું વિચારે તે વાત યુગને ઉમદા લાગી.",
+                explanation_en: "Correct Answer: Because he was concerned about the poor. Yug found it noble that someone was thinking about the needy."
+            },
+            {
+                id: 15,
+                question_gu: "દેરાસર અને પાઠશાળા કોના પ્રતિક છે?",
+                question_en: "What are the Derasar and Pathshala symbols of?",
+                options_gu: ["ફક્ત ધર્મના", "ફક્ત સંસ્કૃતિના", "ધર્મ, સંસ્કૃતિ અને શ્રદ્ધાના", "આપણા સમાજના"],
+                options_en: ["Only of religion", "Only of culture", "Of religion, culture, and faith", "Of our society"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: ધર્મ, સંસ્કૃતિ અને શ્રદ્ધાના. તે આપણી ઓળખના આધારસ્તંભ છે.",
+                explanation_en: "Correct Answer: Of religion, culture, and faith. They are the pillars of our identity."
+            },
+            // Scenario Questions
+            {
+                id: 16,
+                question_gu: "તમારો મિત્ર તમને મોજશોખ માટે પાર્ટી કરવા પૈસા માંગે છે. તેને પૈસા આપવા એ કેવું દાન ગણાય?",
+                question_en: "Your friend asks for money to throw a party for fun. What kind of donation would this be considered?",
+                options_gu: ["સુપાત્ર દાન", "કુપાત્ર દાન", "મિત્રતા નિભાવવી", "સમાજ સેવા"],
+                options_en: ["Worthy donation (Supatra)", "Unworthy donation (Kupatra)", "Maintaining friendship", "Social service"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: કુપાત્ર દાન. મોજશોખ કે ભોગવિલાસ માટે આપેલો પૈસો દાનના સિદ્ધાંત મુજબ યોગ્ય નથી.",
+                explanation_en: "Correct Answer: Unworthy donation (Kupatra). Giving money for leisure or indulgence is not appropriate according to the principles of charity."
+            },
+            {
+                id: 17,
+                question_gu: "એક પ્રતિભાશાળી વિદ્યાર્થી ગરીબીને કારણે તેની શાળાની ફી ભરી શકતો નથી. તેને મદદ કરવી એ કેવું દાન છે?",
+                question_en: "A talented student cannot afford their school fees due to poverty. What kind of charity is helping them?",
+                options_gu: ["કુપાત્ર દાન", "સુપાત્ર દાન", "રોકાણ", "ફરજ નથી"],
+                options_en: ["Kupatra Daan", "Supatra Daan", "An investment", "Not a duty"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: સુપાત્ર દાન. જ્ઞાન મેળવવામાં મદદ કરવી (જ્ઞાન દાન) એ શ્રેષ્ઠ દાન છે કારણ કે તે વ્યક્તિના ભવિષ્યનું નિર્માણ કરે છે.",
+                explanation_en: "Correct Answer: Supatra Daan. Helping someone gain knowledge (Gyan Daan) is an excellent form of charity as it builds a person's future."
+            },
+            {
+                id: 18,
+                question_gu: "તમારા વિસ્તારમાં એક નવા હોસ્પિટલના નિર્માણ માટે ફાળો માંગવામાં આવે છે. શું તમારે દાન આપવું જોઈએ?",
+                question_en: "Donations are being collected for the construction of a new hospital in your area. Should you donate?",
+                options_gu: ["ના, સરકાર બનાવશે", "હા, કારણ કે તે સેવાની પ્રવૃત્તિ છે", "ના, કારણ કે મારી પાસે પૈસા નથી", "હા, જો મારું નામ લખાશે તો"],
+                options_en: ["No, the government will build it", "Yes, because it is an act of service", "No, because I don't have money", "Yes, if my name will be displayed"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: હા, કારણ કે તે સેવાની પ્રવૃત્તિ છે. આરોગ્ય સેવા (જીવદયા) પૂરી પાડતી સંસ્થા 'સુપાત્ર' છે.",
+                explanation_en: "Correct Answer: Yes, because it is an act of service. An institution providing health services (saving lives) is a 'Supatra'."
+            },
+            {
+                id: 19,
+                question_gu: "તમારી પાસે જૂના પણ સારી સ્થિતિમાં કપડાં છે. દાન કરવાની શ્રેષ્ઠ રીત કઈ છે?",
+                question_en: "You have old clothes that are in good condition. What is the best way to donate them?",
+                options_gu: ["મંદિરની બહાર મૂકી દેવા", "કોઈપણ ભિખારીને આપી દેવા", "જરૂરિયાતમંદોને કપડાં પહોંચાડતી સંસ્થાને આપવા", "ફેંકી દેવા"],
+                options_en: ["Leave them outside a temple", "Give them to any beggar", "Give them to an organization that distributes clothes to the needy", "Throw them away"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: સંસ્થાને આપવા. સંસ્થાઓ યોગ્ય વ્યક્તિ સુધી સન્માનપૂર્વક વસ્તુ પહોંચાડે છે, જેથી દાનનો દુરુપયોગ ન થાય.",
+                explanation_en: "Correct Answer: Give them to an organization. Organizations ensure that items reach the right people with dignity, preventing misuse of the donation."
+            },
+            {
+                id: 20,
+                question_gu: "એક સંસ્થા દાન માંગે છે, પરંતુ તે સંસ્થાના સંચાલકો ખૂબ વૈભવી જીવન જીવે છે. શું ત્યાં દાન આપવું યોગ્ય છે?",
+                question_en: "An organization asks for donations, but its directors live very luxurious lives. Is it appropriate to donate there?",
+                options_gu: ["હા, સંસ્થાનું કામ સારું છે", "ના, કારણ કે દાનનો દુરુપયોગ થવાની શંકા છે", "હા, તેમના જીવન સાથે શું લેવાદેવા", "કદાચ થોડું દાન અપાય"],
+                options_en: ["Yes, the organization's work is good", "No, because there is a suspicion of misuse of funds", "Yes, what does it have to do with their lives", "Maybe a small donation can be given"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: ના. જ્યાં દાનના પૈસાનો ઉપયોગ ભોગવિલાસ માટે થતો હોય તેવી શંકા હોય, તે 'કુપાત્ર' ગણાય.",
+                explanation_en: "Correct Answer: No. A place where there is a suspicion that donation money is being used for indulgence is considered 'Kupatra'."
+            },
+            {
+                id: 21,
+                question_gu: "રસ્તા પર એક સ્વસ્થ અને કામ કરવા સક્ષમ વ્યક્તિ ભીખ માંગે છે. તમારે શું કરવું જોઈએ?",
+                question_en: "A healthy person capable of working is begging on the street. What should you do?",
+                options_gu: ["તરત જ પૈસા આપી દેવા", "તેને ધમકાવવો", "પૈસાને બદલે ભોજન ઓફર કરવું અથવા કામ શોધવામાં મદદ કરવી", "ધ્યાન ન આપવું"],
+                options_en: ["Give money immediately", "Scold them", "Offer food instead of money or help find work", "Ignore them"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: ભોજન ઓફર કરવું. આનાથી તેની તાત્કાલિક જરૂરિયાત સંતોષાય છે અને પૈસાના દુરુપયોગની શક્યતા ઘટે છે.",
+                explanation_en: "Correct Answer: Offer food. This satisfies their immediate need and reduces the possibility of the money being misused."
+            },
+            {
+                id: 22,
+                question_gu: "પશુ-પક્ષીઓની સેવા કરતી ગૌશાળા કે પાંજરાપોળમાં દાન આપવું એ કેવું કર્મ છે?",
+                question_en: "What kind of act is donating to a Gaushala or Panjrapole that serves animals and birds?",
+                options_gu: ["જરૂરી નથી", "જીવદયાનું ઉત્તમ કાર્ય (સુપાત્ર દાન)", "પૈસાનો બગાડ", "ફક્ત ધાર્મિક લોકો માટે છે"],
+                options_en: ["Not necessary", "An excellent act of compassion (Supatra Daan)", "A waste of money", "It's only for religious people"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: જીવદયાનું ઉત્તમ કાર્ય. અબોલ જીવોની સેવા કરવી એ સેવાનો જ એક ભાગ છે અને તે સુપાત્ર દાન છે.",
+                explanation_en: "Correct Answer: An excellent act of compassion. Serving voiceless creatures is a part of service and is a worthy donation (Supatra Daan)."
+            },
+            {
+                id: 23,
+                question_gu: "તમારા મિત્રને ધંધામાં નુકસાન થયું છે અને તેને મદદની જરૂર છે. આ મદદને શું ગણાય?",
+                question_en: "Your friend has incurred a loss in business and needs help. What would this help be considered?",
+                options_gu: ["દાન", "ફરજ", "ઉધાર/લોન અથવા મિત્ર તરીકે મદદ", "કુપાત્ર દાન"],
+                options_en: ["Charity", "Duty", "A loan or help as a friend", "Kupatra Daan"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: ઉધાર/લોન અથવા મિત્ર તરીકે મદદ. આને પરંપરાગત 'દાન' કરતાં મિત્ર તરીકેની ફરજ કે મદદ ગણવી વધુ યોગ્ય છે.",
+                explanation_en: "Correct Answer: A loan or help as a friend. This is more appropriately considered a friendly duty or help rather than traditional 'charity'."
+            },
+            {
+                id: 24,
+                question_gu: "કોઈ વ્યક્તિ 'દાન' આપે છે પણ બધાને બતાવવા માટે અને પોતાનું નામ મોટું કરવા માટે. આ દાનનો ભાવ કેવો છે?",
+                question_en: "A person gives 'charity' but only to show off and enhance their reputation. What is the intention behind this donation?",
+                options_gu: ["શુદ્ધ ભાવ", "અપેક્ષા સાથેનો ભાવ", "સેવા ભાવ", "ઉત્તમ ભાવ"],
+                options_en: ["Pure intention", "Intention with expectation", "Intention of service", "Excellent intention"],
+                correct_index: 1,
+                explanation_gu: "સાચો જવાબ: અપેક્ષા સાથેનો ભાવ. સાચું દાન નિસ્વાર્થ ભાવે અને અપેક્ષા વગર થવું જોઈએ. કીર્તિની અપેક્ષા દાનના ફળને ઓછું કરે છે.",
+                explanation_en: "Correct Answer: Intention with expectation. True charity should be selfless and without expectations. The expectation of fame diminishes the fruit of the donation."
+            },
+            {
+                id: 25,
+                question_gu: "સ્થાનિક પુસ્તકાલય બાળકો માટે નવી ચોપડીઓ ખરીદવા ફંડ માંગે છે. આ કેવું દાન છે?",
+                question_en: "The local library is asking for funds to buy new books for children. What kind of donation is this?",
+                options_gu: ["કુપાત્ર દાન", "જરૂરી નથી", "સુપાત્ર દાન (જ્ઞાન દાન)", "શોખનું દાન"],
+                options_en: ["Kupatra Daan", "Not necessary", "Supatra Daan (Knowledge donation)", "Hobby donation"],
+                correct_index: 2,
+                explanation_gu: "સાચો જવાબ: સુપાત્ર દાન. પુસ્તકાલય જ્ઞાનની પ્રવૃત્તિ કરે છે, જે સમાજ માટે ખૂબ ફાયદાકારક છે.",
+                explanation_en: "Correct Answer: Supatra Daan. A library promotes knowledge, which is very beneficial for society."
+            }
+        ];
+
+        // --- GLOBAL VARIABLES ---
+        let currentLanguage = 'gu';
+        let shuffledQuizData = [];
+
+        // --- DOM ELEMENTS ---
+        const quizContainer = document.getElementById('quiz-container');
+        const mainTitle = document.getElementById('main-title');
+        const footerText = document.getElementById('footer-text');
+        const guBtn = document.getElementById('lang-gu');
+        const enBtn = document.getElementById('lang-en');
+
+        // --- FUNCTIONS ---
+
+        /**
+         * Shuffles an array in place using the Fisher-Yates algorithm.
+         * @param {Array} array The array to shuffle.
+         */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        /**
+         * Renders the entire quiz in the selected language.
+         */
+        function renderQuiz() {
+            quizContainer.innerHTML = ''; // Clear previous content
+            
+            // Set body font based on language
+            document.body.style.fontFamily = currentLanguage === 'gu' ? "var(--font-gu)" : "var(--font-en)";
+
+            // Update static text
+            mainTitle.textContent = currentLanguage === 'gu' ? 'દાન: એક દ્રષ્ટિકોણ' : 'Charity: A Perspective';
+            footerText.textContent = 'મનીષ વી. શાહ: વોટ્સએપ: 94299 26447: (વડોદરા)'; // Remains constant
+
+            // Update language button styles
+            guBtn.classList.toggle('active', currentLanguage === 'gu');
+            enBtn.classList.toggle('active', currentLanguage === 'en');
+
+            shuffledQuizData.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                card.setAttribute('data-question-id', q.id);
+
+                const questionText = currentLanguage === 'gu' ? q.question_gu : q.question_en;
+                const options = currentLanguage === 'gu' ? q.options_gu : q.options_en;
+                const questionNumberText = currentLanguage === 'gu' ? `પ્રશ્ન ${index + 1}` : `Question ${index + 1}`;
+
+                let optionsHTML = '';
+                options.forEach((option, i) => {
+                    optionsHTML += `<button class="option" onclick="checkAnswer(${q.id}, ${i})">${option}</button>`;
+                });
+
+                card.innerHTML = `
+                    <div class="question-number">${questionNumberText}</div>
+                    <p class="question-text">${questionText}</p>
+                    <div class="options-container">${optionsHTML}</div>
+                    <div id="explanation-${q.id}" class="explanation" style="display: none;"></div>
+                `;
+                quizContainer.appendChild(card);
+            });
+        }
+
+        /**
+         * Checks the user's answer, provides feedback, and reveals the explanation.
+         * @param {number} questionId The ID of the question being answered.
+         * @param {number} selectedIndex The index of the option chosen by the user.
+         */
+        function checkAnswer(questionId, selectedIndex) {
+            const question = quizData.find(q => q.id === questionId);
+            const card = document.querySelector(`[data-question-id='${questionId}']`);
+            const options = card.querySelectorAll('.option');
+            const explanationBox = card.querySelector(`#explanation-${question.id}`);
+            
+            const isCorrect = selectedIndex === question.correct_index;
+
+            // Disable all options for this question
+            options.forEach(opt => opt.disabled = true);
+
+            // Style the selected option
+            options[selectedIndex].classList.add(isCorrect ? 'correct' : 'wrong');
+
+            // If wrong, also highlight the correct answer
+            if (!isCorrect) {
+                options[question.correct_index].classList.add('correct');
+            }
+
+            // Prepare and show the explanation
+            const explanationText = currentLanguage === 'gu' ? question.explanation_gu : question.explanation_en;
+            const resultText = currentLanguage === 'gu' 
+                ? (isCorrect ? '<span class="correct-text">સાચું!</span>' : '<span class="wrong-text">ખોટું.</span>')
+                : (isCorrect ? '<span class="correct-text">Correct!</span>' : '<span class="wrong-text">Wrong.</span>');
+
+            explanationBox.innerHTML = `${resultText} ${explanationText}`;
+            explanationBox.style.display = 'block';
+        }
+
+        /**
+         * Switches the language and re-renders the quiz.
+         * @param {string} lang The language to switch to ('gu' or 'en').
+         */
+        function switchLanguage(lang) {
+            if (currentLanguage !== lang) {
+                currentLanguage = lang;
+                renderQuiz();
+            }
+        }
+
+        // --- EVENT LISTENERS ---
+        guBtn.addEventListener('click', () => switchLanguage('gu'));
+        enBtn.addEventListener('click', () => switchLanguage('en'));
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create a shuffled copy of the quiz data to use
+            shuffledQuizData = [...quizData];
+            shuffleArray(shuffledQuizData);
+            renderQuiz(); // Initial render in Gujarati
+        });
+
+    </script>
+</body>
+</html>
